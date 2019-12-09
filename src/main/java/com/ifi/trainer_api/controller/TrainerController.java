@@ -28,4 +28,9 @@ class TrainerController {
     Trainer createTrainer(@RequestBody Trainer trainer) {
         return trainerService.createTrainer(trainer);
     }
+
+    // @PutMapping(path = "/")
+    // Trainer updateTrainer(@RequestBody Trainer trainer) {
+
+    // } TODO
 }
