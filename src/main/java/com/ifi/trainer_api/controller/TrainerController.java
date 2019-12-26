@@ -29,8 +29,13 @@ class TrainerController {
         return trainerService.createTrainer(trainer);
     }
 
-    // @PutMapping(path = "/")
-    // Trainer updateTrainer(@RequestBody Trainer trainer) {
+    @PutMapping(path = "/")
+    Trainer updateTrainer(@RequestBody Trainer trainer) {
+        return trainerService.updateTrainer(trainer);
+    }
 
-    // } TODO
+    @DeleteMapping(path = "/")
+    void deleteTrainer(@RequestBody Trainer trainer) {
+        trainerService.deleteTrainer(trainer);
+    }
 }

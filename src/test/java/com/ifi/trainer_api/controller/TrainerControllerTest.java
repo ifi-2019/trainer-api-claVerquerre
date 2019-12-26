@@ -1,15 +1,13 @@
 package com.ifi.trainer_api.controller;
 
+import com.ifi.trainer_api.bo.Trainer;
 import com.ifi.trainer_api.service.TrainerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -74,5 +72,19 @@ class TrainerControllerTest {
         assertArrayEquals(new String[]{"/{name}"}, getMapping.value());
 
         assertNotNull(pathVariableAnnotation);
+    }
+
+    @Test
+    void createTrainer_shouldBeAnnotated() throws NoSuchMethodException {
+        var createTrainer = TrainerController.class.getDeclaredMethod("createTrainer", Trainer.class);
+        var postMapping = createTrainer.getAnnotation(PostMapping.class);
+        assertNotNull(postMapping);
+    }
+
+    @Test
+    void deleteTrainer_shouldBeAnnotated() throws NoSuchMethodException {
+        var deleteTrainer = TrainerController.class.getDeclaredMethod("deleteTrainer", Trainer.class);
+        var deleteMapping = deleteTrainer.getAnnotation(DeleteMapping.class);
+        assertNotNull(deleteMapping);
     }
 }
